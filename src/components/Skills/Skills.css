@@ -1,0 +1,181 @@
+.skills-section,
+.skills {
+  min-height: 100vh;
+  padding: 120px 0;
+}
+
+.skills-head {
+  padding: 0 11vw;
+}
+
+.skills-menu {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skill-row {
+  position: relative;
+  height: 112px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skill-row-btn {
+  width: 100%;
+  height: 100%;
+  padding: 0 10vw;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  transition: opacity 0.35s ease;
+}
+
+.skill-row-btn span {
+  text-transform: uppercase;
+  font-size: clamp(42px, 5vw, 76px);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+}
+
+.skill-row-btn small {
+  font-family: Cinzel, serif;
+  color: #9ccaff;
+}
+
+.skill-row:hover .skill-row-btn {
+  opacity: 0.08;
+}
+
+.skill-marquee {
+  position: absolute;
+  inset: 0;
+  background: #080808;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  transform: translateY(101%);
+  transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+  pointer-events: none;
+}
+
+.skill-row:hover .skill-marquee {
+  transform: translateY(0);
+}
+
+.skill-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  min-width: max-content;
+  white-space: nowrap;
+  animation: skillsMarquee 10s linear infinite;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+.skill-track b {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 55px;
+  border-right: 1px solid rgba(34, 211, 238, 0.25);
+  color: var(--cyan);
+  text-transform: uppercase;
+  font-size: 1.15rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.skill-track svg {
+  font-size: 40px;
+  color: #60a5fa;
+  flex-shrink: 0;
+  filter:
+    drop-shadow(0 0 10px rgba(96, 165, 250, 0.5))
+    drop-shadow(0 0 18px rgba(96, 165, 250, 0.25));
+  transition: 0.3s;
+}
+
+.skill-track b:hover svg {
+  transform: scale(1.15);
+}
+
+.skill-track span {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+@keyframes skillsMarquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-33.333%, 0, 0);
+  }
+}
+
+@media (max-width: 700px) {
+  .skills-section,
+  .skills {
+    padding: 90px 0;
+  }
+
+  .skills-head {
+    padding: 0 24px;
+  }
+
+  .skill-row {
+    height: 92px;
+  }
+
+  .skill-row-btn {
+    padding: 0 24px;
+  }
+
+  .skill-row-btn span {
+    font-size: clamp(32px, 10vw, 48px);
+  }
+
+  .skill-track {
+    animation-duration: 10s;
+  }
+
+  .skill-track b {
+    gap: 12px;
+    padding: 0 32px;
+    font-size: 0.95rem;
+  }
+
+  .skill-track svg {
+    font-size: 30px;
+  }
+
+  .skill-track span {
+    font-size: 0.95rem;
+  }
+}
+
+
+.skill-row:nth-child(1) .skill-track {
+  animation-duration: 9s;
+}
+
+.skill-row:nth-child(2) .skill-track {
+  animation-duration: 7s;
+}
+
+.skill-row:nth-child(3) .skill-track {
+  animation-duration: 5s;
+}
+
+.skill-row:nth-child(4) .skill-track {
+  animation-duration: 9s;
+}

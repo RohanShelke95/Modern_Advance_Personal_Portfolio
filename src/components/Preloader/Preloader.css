@@ -1,0 +1,245 @@
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background:
+    radial-gradient(circle at center, rgba(34, 211, 238, 0.16), transparent 32%),
+    #020202;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  transition:
+    opacity 0.75s ease,
+    visibility 0.75s ease,
+    transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.preloader::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 120px 120px;
+  opacity: 0.28;
+}
+
+.preloader::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, transparent 18%, rgba(0,0,0,0.82) 76%);
+}
+
+.preloader-center {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.preloader-icon {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 58px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(34,211,238,.28), transparent 45%),
+    rgba(8,10,25,.95);
+  border: 1px solid rgba(34,211,238,.55);
+  box-shadow:
+    0 0 34px rgba(34,211,238,.38),
+    0 0 90px rgba(96,165,250,.16),
+    inset 0 0 26px rgba(255,255,255,.07);
+  animation:
+    iconSpin 1.8s cubic-bezier(.22,1,.36,1) forwards,
+    iconPulse 2.2s ease-in-out 1.8s infinite;
+}
+
+.preloader-icon span {
+  font-size: 52px;
+  font-weight: 900;
+  background: linear-gradient(90deg, #60a5fa, #00f0ff, #00ff88);
+  -webkit-background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 16px rgba(34,211,238,.55));
+}
+
+.preloader-brand {
+  position: relative;
+  font-family: Cinzel, serif;
+  font-size: clamp(76px, 10vw, 158px);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,.14);
+  margin-bottom: 46px;
+  opacity: 0;
+  transform: translateY(90px) scale(.9);
+  animation: logoReveal 1s cubic-bezier(.22,1,.36,1) .45s forwards;
+  overflow: hidden;
+}
+
+.preloader-brand::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -45%;
+  width: 38%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(34,211,238,.9),
+    rgba(255,255,255,.95),
+    transparent
+  );
+  transform: skewX(-18deg);
+  filter: blur(8px);
+  animation: logoSweep 1.4s ease-in-out 1.15s forwards;
+}
+
+.preloader-count {
+  color: #eafcff;
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  margin-bottom: 18px;
+  text-shadow:
+    0 0 14px rgba(34,211,238,.75),
+    0 0 35px rgba(34,211,238,.35);
+  animation: loadingGlow 1.1s ease-in-out infinite;
+}
+
+.preloader-bar {
+  width: min(360px, 62vw);
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  overflow: hidden;
+  box-shadow: 0 0 18px rgba(34,211,238,.18);
+}
+
+.preloader-bar span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, transparent, #00f0ff, #ffffff);
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: barFill 2.1s cubic-bezier(.22,1,.36,1) forwards;
+  box-shadow:
+    0 0 18px rgba(34,211,238,.9),
+    0 0 35px rgba(34,211,238,.4);
+}
+
+.preloader-text {
+  margin-top: 18px;
+  color: rgba(255,255,255,.35);
+  font-size: 11px;
+  letter-spacing: .55em;
+  text-transform: uppercase;
+}
+
+.preloader.hide {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-100%);
+}
+
+@keyframes iconSpin {
+  0% {
+    transform: rotate(0deg) scale(.82);
+  }
+
+  70% {
+    transform: rotate(390deg) scale(1.08);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes logoReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(90px) scale(.9);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateY(-8px) scale(1.03);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes logoSweep {
+  to {
+    left: 120%;
+  }
+}
+
+@keyframes loadingGlow {
+  0%, 100% {
+    text-shadow:
+      0 0 14px rgba(34,211,238,.75),
+      0 0 35px rgba(34,211,238,.35);
+  }
+
+  50% {
+    text-shadow:
+      0 0 22px rgba(34,211,238,1),
+      0 0 60px rgba(34,211,238,.55);
+  }
+}
+
+@keyframes barFill {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .preloader-icon {
+    width: 118px;
+    height: 118px;
+    margin-bottom: 46px;
+  }
+
+  .preloader-icon span {
+    font-size: 40px;
+  }
+
+  .preloader-brand {
+    font-size: 74px;
+    margin-bottom: 38px;
+  }
+
+  .preloader-count {
+    font-size: 20px;
+  }
+
+  .preloader-bar {
+    width: 250px;
+  }
+}
